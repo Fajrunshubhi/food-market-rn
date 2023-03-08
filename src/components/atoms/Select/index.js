@@ -2,10 +2,10 @@ import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
-const Select = () => {
+const Select = props => {
   return (
     <View>
-      <Text style={styles.label}>City</Text>
+      <Text style={styles.label}>{props.label}</Text>
       <View style={styles.input}>
         <Picker>
           <Picker.Item label="Java" value="java" />

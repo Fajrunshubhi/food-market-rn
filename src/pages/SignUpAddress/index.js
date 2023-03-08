@@ -21,9 +21,14 @@ const SignUpAddress = ({navigation}) => {
         <Gap height={16} />
         <TextInput labelInput="House No." placeholder="Type your address" />
         <Gap height={16} />
-        <Select />
+        <Select label="City" />
         <Gap height={16} />
-        <Button buttonName="Sign Up Now" color="#FFC700" textColor="#020202" />
+        <Button
+          buttonName="Sign Up Now"
+          color="#FFC700"
+          textColor="#020202"
+          onPress={() => navigation.replace('SuccessSignUp')}
+        />
         <Gap height={12} />
       </View>
     </View>
