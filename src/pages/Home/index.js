@@ -1,25 +1,18 @@
 import React from 'react';
-import {Text, View, Image, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import {
   FoodDummy1,
-  profileDummy,
   FoodDummy2,
   FoodDummy3,
   FoodDummy4,
   FoodDummy5,
 } from '../../assets';
-import {FoodCard, HomeTabSection} from '../../components';
+import {FoodCard, HomeProfile, HomeTabSection} from '../../components';
 
 const Home = ({navigation}) => {
   return (
     <View style={styles.page}>
-      <View style={styles.profileContainer}>
-        <View>
-          <Text style={styles.appName}>FoodMarket</Text>
-          <Text style={styles.desc}>Let's get some foods</Text>
-        </View>
-        <Image source={profileDummy} style={styles.profile} />
-      </View>
+      <HomeProfile />
       <View>
         <ScrollView
           style={styles.ScrollView}
