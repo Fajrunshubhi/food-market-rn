@@ -1,11 +1,11 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
-import {FoodDummy1, IcStarOn, IcStarOff} from '../../../assets';
+import {IcStarOn, IcStarOff} from '../../../assets';
 
-const FoodCard = () => {
+const FoodCard = ({image}) => {
   return (
     <View style={styles.container}>
-      <Image source={FoodDummy1} />
+      <Image source={image} style={styles.image} />
       <View style={styles.content}>
         <Text style={styles.text}>Cherry Healthy</Text>
         <View style={styles.ratingContainer}>
@@ -27,6 +27,7 @@ export default FoodCard;
 
 const styles = StyleSheet.create({
   container: {
+    marginEnd: 24,
     width: 200,
     backgroundColor: 'white',
     borderRadius: 8,
@@ -36,6 +37,11 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 14,
     overflow: 'hidden',
+  },
+  image: {
+    width: 200,
+    height: 140,
+    resizeMode: 'cover',
   },
   content: {
     padding: 12,
