@@ -19,21 +19,21 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 
-const HomeApp = () => {
-  return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen
-        options={{headerShown: false}}
-        name="Home"
-        component={Home}
-      />
-      <Stack.Screen name="Settings" component={SettingsScreen} />
-    </HomeStack.Navigator>
-  );
-};
-function SettingsScreen() {
-  return <View />;
-}
+// const HomeApp = () => {
+//   return (
+//     <HomeStack.Navigator>
+//       <HomeStack.Screen
+//         options={{headerShown: false}}
+//         name="Home"
+//         component={Home}
+//       />
+//       <Stack.Screen name="Settings" component={SettingsScreen} />
+//     </HomeStack.Navigator>
+//   );
+// };
+// function SettingsScreen() {
+//   return <View />;
+// }
 
 const MainApp = () => {
   return (
@@ -41,7 +41,7 @@ const MainApp = () => {
       initialRouteName="HomeApp"
       screenOptions={{headerShown: false}}
       tabBar={props => <BottomNavigator {...props} />}>
-      <Tab.Screen name="Home" component={HomeApp} />
+      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Order" component={Order} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
