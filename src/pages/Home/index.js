@@ -81,7 +81,6 @@ export default Home;
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: 'yellow',
   },
   profileContainer: {
     flexDirection: 'row',
