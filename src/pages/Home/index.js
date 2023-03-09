@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Text,
   View,
-  Button,
   Image,
   StyleSheet,
   ScrollView,
@@ -19,11 +18,9 @@ import {
 import {FoodCard} from '../../components';
 import {TabView, SceneMap} from 'react-native-tab-view';
 
-const FirstRoute = () => <View style={{flex: 1, backgroundColor: '#ff4081'}} />;
+const FirstRoute = () => <View style={styles.FirstRoute} />;
 
-const SecondRoute = () => (
-  <View style={{flex: 1, backgroundColor: '#673ab7'}} />
-);
+const SecondRoute = () => <View style={styles.SecondRoute} />;
 
 const renderScene = SceneMap({
   1: FirstRoute,
@@ -113,4 +110,6 @@ const styles = StyleSheet.create({
   tabContainer: {
     flex: 1,
   },
+  FirstRoute: {flex: 1, backgroundColor: '#ff4081'},
+  SecondRoute: {flex: 1, backgroundColor: '#673ab7'},
 });
