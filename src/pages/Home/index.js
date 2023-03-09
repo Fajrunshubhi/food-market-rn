@@ -1,14 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View, Button} from 'react-native';
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <View>
       <Text>Home</Text>
+      <Button
+        title="go to setting"
+        onPress={() => navigation.navigate('Settings')}
+      />
     </View>
   );
 };
 
 export default Home;
 
-const styles = StyleSheet.create({});
+// const styles = StyleSheet.create({});

@@ -1,6 +1,8 @@
 import React from 'react';
+import {View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
 import {
   Home,
   Profile,
@@ -9,16 +11,37 @@ import {
   SignUp,
   SignUpAddress,
   SplashScreen,
+  SuccessSignUp,
 } from '../pages';
-import SuccessSignUp from '../pages/SuccessSignUp';
+import {BottomNavigator} from '../components';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
+
+const HomeApp = () => {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        options={{headerShown: false}}
+        name="Home"
+        component={Home}
+      />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
+    </HomeStack.Navigator>
+  );
+};
+function SettingsScreen() {
+  return <View />;
+}
 
 const MainApp = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
+    <Tab.Navigator
+      initialRouteName="HomeApp"
+      screenOptions={{headerShown: false}}
+      tabBar={props => <BottomNavigator {...props} />}>
+      <Tab.Screen name="Home" component={HomeApp} />
       <Tab.Screen name="Order" component={Order} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
