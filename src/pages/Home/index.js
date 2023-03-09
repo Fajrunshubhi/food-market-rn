@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  ScrollView,
-  useWindowDimensions,
-} from 'react-native';
+import {Text, View, Image, StyleSheet, ScrollView} from 'react-native';
 import {
   FoodDummy1,
   profileDummy,
@@ -15,29 +8,9 @@ import {
   FoodDummy4,
   FoodDummy5,
 } from '../../assets';
-import {FoodCard} from '../../components';
-import {TabView, SceneMap} from 'react-native-tab-view';
-
-const FirstRoute = () => <View style={styles.FirstRoute} />;
-
-const SecondRoute = () => <View style={styles.SecondRoute} />;
-
-const renderScene = SceneMap({
-  1: FirstRoute,
-  2: SecondRoute,
-  3: FirstRoute,
-});
+import {FoodCard, HomeTabSection} from '../../components';
 
 const Home = ({navigation}) => {
-  const layout = useWindowDimensions();
-
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    {key: '1', title: 'New Taste'},
-    {key: '2', title: 'Popular'},
-    {key: '3', title: 'Recommended'},
-  ]);
-
   return (
     <View style={styles.page}>
       <View style={styles.profileContainer}>
@@ -62,12 +35,7 @@ const Home = ({navigation}) => {
         </ScrollView>
       </View>
       <View style={styles.tabContainer}>
-        <TabView
-          navigationState={{index, routes}}
-          renderScene={renderScene}
-          onIndexChange={setIndex}
-          initialLayout={{width: layout.width}}
-        />
+        <HomeTabSection />
       </View>
     </View>
   );
@@ -110,6 +78,4 @@ const styles = StyleSheet.create({
   tabContainer: {
     flex: 1,
   },
-  FirstRoute: {flex: 1, backgroundColor: '#ff4081'},
-  SecondRoute: {flex: 1, backgroundColor: '#673ab7'},
 });
