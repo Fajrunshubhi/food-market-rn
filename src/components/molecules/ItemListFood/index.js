@@ -1,13 +1,13 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
-import {FoodDummy1} from '../../../assets';
+
 import Rating from '../Rating';
 
-const ItemListFood = () => {
+const ItemListFood = ({image}) => {
   return (
     <View style={styles.tasteContainer}>
       <View style={styles.imgContainer}>
-        <Image source={FoodDummy1} style={styles.img} />
+        <Image source={image} style={styles.img} />
       </View>
       <View style={styles.textFoodContainer}>
         <Text style={styles.textFood}> Soup Bumil</Text>

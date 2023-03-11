@@ -8,23 +8,53 @@ import {
 import React from 'react';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import ItemListFood from '../ItemListFood';
+import {
+  FoodDummy1,
+  FoodDummy2,
+  FoodDummy3,
+  FoodDummy4,
+  FoodDummy5,
+} from '../../../assets';
 
 const NewTaste = () => (
   <ScrollView>
     <View style={styles.FirstRoute}>
-      <ItemListFood />
-      <ItemListFood />
-      <ItemListFood />
-      <ItemListFood />
-      <ItemListFood />
-      <ItemListFood />
-      <ItemListFood />
+      <ItemListFood image={FoodDummy1} />
+      <ItemListFood image={FoodDummy2} />
+      <ItemListFood image={FoodDummy3} />
+      <ItemListFood image={FoodDummy4} />
+      <ItemListFood image={FoodDummy5} />
     </View>
   </ScrollView>
 );
 
-const SecondRoute = () => <View style={styles.SecondRoute} />;
+const Popular = () => {
+  return (
+    <ScrollView>
+      <View style={styles.SecondRoute}>
+        <ItemListFood image={FoodDummy3} />
+        <ItemListFood image={FoodDummy1} />
+        <ItemListFood image={FoodDummy5} />
+        <ItemListFood image={FoodDummy2} />
+        <ItemListFood image={FoodDummy4} />
+      </View>
+    </ScrollView>
+  );
+};
 
+const Recommended = () => {
+  return (
+    <ScrollView>
+      <View style={styles.SecondRoute}>
+        <ItemListFood image={FoodDummy5} />
+        <ItemListFood image={FoodDummy3} />
+        <ItemListFood image={FoodDummy2} />
+        <ItemListFood image={FoodDummy1} />
+        <ItemListFood image={FoodDummy4} />
+      </View>
+    </ScrollView>
+  );
+};
 const renderTabBar = props => (
   <TabBar
     {...props}
@@ -49,8 +79,8 @@ const HomeTabSection = () => {
 
   const renderScene = SceneMap({
     1: NewTaste,
-    2: SecondRoute,
-    3: NewTaste,
+    2: Popular,
+    3: Recommended,
   });
 
   const [index, setIndex] = React.useState(0);
@@ -77,6 +107,6 @@ const styles = StyleSheet.create({
   indicatorStyle: {backgroundColor: '#020202', height: 3, marginStart: 20},
   tabHeader: {backgroundColor: 'white', paddingStart: 20},
   tabStyle: {width: 'auto'},
-  FirstRoute: {flex: 1, backgroundColor: '#white'},
-  SecondRoute: {flex: 1, backgroundColor: '#673ab7'},
+  FirstRoute: {flex: 1, backgroundColor: 'white'},
+  SecondRoute: {flex: 1, backgroundColor: 'white'},
 });
