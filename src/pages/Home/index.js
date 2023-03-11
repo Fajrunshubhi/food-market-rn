@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView, Text} from 'react-native';
 import {
   FoodDummy1,
   FoodDummy2,
@@ -9,9 +9,9 @@ import {
 } from '../../assets';
 import {FoodCard, HomeProfile, HomeTabSection} from '../../components';
 
-const Home = ({navigation}) => {
+const Home = () => {
   return (
-    <View style={styles.page}>
+    <View style={{flex: 1}}>
       <HomeProfile />
       <View>
         <ScrollView
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   foddCardContainer: {
     flexDirection: 'row',
-    paddingVertical: 24,
+    paddingVertical: 10,
     paddingStart: 24,
   },
   tabContainer: {
