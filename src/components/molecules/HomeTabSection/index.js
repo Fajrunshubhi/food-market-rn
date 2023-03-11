@@ -9,42 +9,43 @@ import React from 'react';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import ItemListFood from '../ItemListFood';
 
+const NewTaste = () => (
+  <ScrollView>
+    <View style={styles.FirstRoute}>
+      <ItemListFood />
+      <ItemListFood />
+      <ItemListFood />
+      <ItemListFood />
+      <ItemListFood />
+      <ItemListFood />
+      <ItemListFood />
+    </View>
+  </ScrollView>
+);
+
+const SecondRoute = () => <View style={styles.SecondRoute} />;
+
+const renderTabBar = props => (
+  <TabBar
+    {...props}
+    indicatorStyle={styles.indicatorStyle}
+    style={styles.tabHeader}
+    tabStyle={styles.tabStyle}
+    renderLabel={({route, focused, color}) => (
+      <Text
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{
+          fontFamily: 'Poppins-Medium',
+          color: focused ? '#020202' : '8D92A3',
+        }}>
+        {route.title}
+      </Text>
+    )}
+  />
+);
+
 const HomeTabSection = () => {
   const layout = useWindowDimensions();
-  const renderTabBar = props => (
-    <TabBar
-      {...props}
-      indicatorStyle={styles.indicatorStyle}
-      style={styles.tabHeader}
-      tabStyle={styles.tabStyle}
-      renderLabel={({route, focused, color}) => (
-        <Text
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{
-            fontFamily: 'Poppins-Medium',
-            color: focused ? '#020202' : '8D92A3',
-          }}>
-          {route.title}
-        </Text>
-      )}
-    />
-  );
-
-  const NewTaste = () => (
-    <ScrollView>
-      <View style={styles.FirstRoute}>
-        <ItemListFood />
-        <ItemListFood />
-        <ItemListFood />
-        <ItemListFood />
-        <ItemListFood />
-        <ItemListFood />
-        <ItemListFood />
-      </View>
-    </ScrollView>
-  );
-
-  const SecondRoute = () => <View style={styles.SecondRoute} />;
 
   const renderScene = SceneMap({
     1: NewTaste,

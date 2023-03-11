@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, ScrollView, Text} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import {
   FoodDummy1,
   FoodDummy2,
@@ -11,7 +11,7 @@ import {FoodCard, HomeProfile, HomeTabSection} from '../../components';
 
 const Home = () => {
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.page}>
       <HomeProfile />
       <View>
         <ScrollView
