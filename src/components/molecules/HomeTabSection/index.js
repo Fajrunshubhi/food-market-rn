@@ -15,20 +15,41 @@ import {
   FoodDummy4,
   FoodDummy5,
 } from '../../../assets';
+import {useNavigation} from '@react-navigation/native';
 
-const NewTaste = () => (
-  <ScrollView>
-    <View style={styles.FirstRoute}>
-      <ItemListFood image={FoodDummy1} />
-      <ItemListFood image={FoodDummy2} />
-      <ItemListFood image={FoodDummy3} />
-      <ItemListFood image={FoodDummy4} />
-      <ItemListFood image={FoodDummy5} />
-    </View>
-  </ScrollView>
-);
+const NewTaste = () => {
+  const navigation = useNavigation();
+  return (
+    <ScrollView>
+      <View style={styles.FirstRoute}>
+        <ItemListFood
+          image={FoodDummy1}
+          onPress={() => navigation.navigate('FoodDetail')}
+        />
+        <ItemListFood
+          image={FoodDummy2}
+          onPress={() => navigation.navigate('FoodDetail')}
+        />
+        <ItemListFood
+          image={FoodDummy3}
+          onPress={() => navigation.navigate('FoodDetail')}
+        />
+        <ItemListFood
+          image={FoodDummy4}
+          onPress={() => navigation.navigate('FoodDetail')}
+        />
+        <ItemListFood
+          image={FoodDummy5}
+          onPress={() => navigation.navigate('FoodDetail')}
+        />
+      </View>
+    </ScrollView>
+  );
+};
 
 const Popular = () => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView>
       <View style={styles.SecondRoute}>
@@ -43,6 +64,8 @@ const Popular = () => {
 };
 
 const Recommended = () => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView>
       <View style={styles.SecondRoute}>
