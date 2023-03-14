@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -79,7 +79,7 @@ const Router = () => {
         component={SuccessSignUp}
         options={{headerShown: false}}
       /> */}
-      {/* <Stack.Screen
+      <Stack.Screen
         name="MainApp"
         component={MainApp}
         options={{headerShown: false}}
@@ -88,7 +88,7 @@ const Router = () => {
         name="FoodDetail"
         component={FoodDetail}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="OrderSummary"
         component={OrderSummary}

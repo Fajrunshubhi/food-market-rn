@@ -7,7 +7,7 @@ import Rating from './Rating';
 import ItemListFood from './ItemListFood';
 import Counter from './Counter';
 import ItemValue from './ItemValue';
-
+import OrderTabSection from './OrderTabSection';
 export {
   Header,
   BottomNavigator,
@@ -18,4 +18,5 @@ export {
   ItemListFood,
   Counter,
   ItemValue,
+  OrderTabSection,
 };
