@@ -25,22 +25,27 @@ const NewTaste = () => {
         <ItemListFood
           image={FoodDummy1}
           onPress={() => navigation.navigate('FoodDetail')}
+          rating={3}
         />
         <ItemListFood
           image={FoodDummy2}
           onPress={() => navigation.navigate('FoodDetail')}
+          rating={3}
         />
         <ItemListFood
           image={FoodDummy3}
           onPress={() => navigation.navigate('FoodDetail')}
+          rating={3}
         />
         <ItemListFood
           image={FoodDummy4}
           onPress={() => navigation.navigate('FoodDetail')}
+          rating={3}
         />
         <ItemListFood
           image={FoodDummy5}
           onPress={() => navigation.navigate('FoodDetail')}
+          rating={3}
         />
       </View>
     </ScrollView>
@@ -53,11 +58,11 @@ const Popular = () => {
   return (
     <ScrollView>
       <View style={styles.SecondRoute}>
-        <ItemListFood image={FoodDummy3} />
-        <ItemListFood image={FoodDummy1} />
-        <ItemListFood image={FoodDummy5} />
-        <ItemListFood image={FoodDummy2} />
-        <ItemListFood image={FoodDummy4} />
+        <ItemListFood image={FoodDummy3} rating={3} />
+        <ItemListFood image={FoodDummy1} rating={3} />
+        <ItemListFood image={FoodDummy5} rating={3} />
+        <ItemListFood image={FoodDummy2} rating={3} />
+        <ItemListFood image={FoodDummy4} rating={3} />
       </View>
     </ScrollView>
   );
@@ -68,12 +73,12 @@ const Recommended = () => {
 
   return (
     <ScrollView>
-      <View style={styles.SecondRoute}>
-        <ItemListFood image={FoodDummy5} />
-        <ItemListFood image={FoodDummy3} />
-        <ItemListFood image={FoodDummy2} />
-        <ItemListFood image={FoodDummy1} />
-        <ItemListFood image={FoodDummy4} />
+      <View style={styles.ThirdRoute}>
+        <ItemListFood image={FoodDummy5} rating={3} />
+        <ItemListFood image={FoodDummy3} rating={3} />
+        <ItemListFood image={FoodDummy2} rating={3} />
+        <ItemListFood image={FoodDummy1} rating={3} />
+        <ItemListFood image={FoodDummy4} rating={3} />
       </View>
     </ScrollView>
   );
@@ -130,6 +135,7 @@ const styles = StyleSheet.create({
   indicatorStyle: {backgroundColor: '#020202', height: 3, marginStart: 20},
   tabHeader: {backgroundColor: 'white', paddingStart: 20},
   tabStyle: {width: 'auto'},
-  FirstRoute: {flex: 1, backgroundColor: 'white'},
-  SecondRoute: {flex: 1, backgroundColor: 'white'},
+  FirstRoute: {flex: 1, backgroundColor: 'white', paddingHorizontal: 24},
+  SecondRoute: {flex: 1, backgroundColor: 'white', paddingHorizontal: 24},
+  ThirdRoute: {flex: 1, backgroundColor: 'white', paddingHorizontal: 24},
 });

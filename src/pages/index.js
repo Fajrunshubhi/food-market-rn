@@ -4,9 +4,10 @@ import SignUp from './SignUp';
 import SignUpAddress from './SignUpAddress';
 import SuccessSignUp from './SuccessSignUp';
 import Home from './Home';
-import Profile from './Profile';
 import Order from './Order';
+import Profile from './Profile';
 import FoodDetail from './FoodDetail';
+import OrderSummary from './OrderSummary';
 
 export {
   SplashScreen,
@@ -18,4 +19,5 @@ export {
   Order,
   Profile,
   FoodDetail,
+  OrderSummary,
 };

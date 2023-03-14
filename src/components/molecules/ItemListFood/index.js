@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Rating from '../Rating';
 
-const ItemListFood = ({image, onPress}) => {
+const ItemListFood = ({rating, image, onPress, items}) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.tasteContainer}>
@@ -13,9 +13,8 @@ const ItemListFood = ({image, onPress}) => {
           <Text style={styles.textFood}> Soup Bumil</Text>
           <Text style={styles.textPrice}> IDR 289.000</Text>
         </View>
-        <View>
-          <Rating />
-        </View>
+        {items && !rating && <Text style={styles.items}>{items} items</Text>}
+        <View>{rating && !items && <Rating />}</View>
       </View>
     </TouchableOpacity>
   );
@@ -29,7 +28,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     marginTop: 5,
     overflow: 'hidden',
-    paddingHorizontal: 24,
     alignItems: 'center',
     backgroundColor: 'white',
   },
@@ -48,6 +46,11 @@ const styles = StyleSheet.create({
   textPrice: {
     fontFamily: 'Poppins-Regular',
     fontSize: 13,
+    color: '#8D92A3',
+  },
+  items: {
+    fontSize: 14,
+    fontFamily: 'Poppins-Regular',
     color: '#8D92A3',
   },
 });

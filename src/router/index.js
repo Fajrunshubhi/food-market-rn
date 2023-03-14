@@ -13,12 +13,13 @@ import {
   SplashScreen,
   SuccessSignUp,
   FoodDetail,
+  OrderSummary,
 } from '../pages';
 import {BottomNavigator} from '../components';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-const HomeStack = createNativeStackNavigator();
+// const HomeStack = createNativeStackNavigator();
 
 // const HomeApp = () => {
 //   return (
@@ -85,6 +86,11 @@ const Router = () => {
       <Stack.Screen
         name="FoodDetail"
         component={FoodDetail}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrderSummary"
+        component={OrderSummary}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
