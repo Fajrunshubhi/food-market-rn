@@ -3,7 +3,7 @@ import React from 'react';
 import {Header, ItemListFood, ItemValue, Button} from '../../components';
 import {FoodDummy1} from '../../assets';
 
-const OrderSummary = () => {
+const OrderSummary = ({navigation}) => {
   return (
     <View>
       <Header
@@ -18,7 +18,11 @@ const OrderSummary = () => {
         <ItemValue label="Cherry Healthy" value="IDR 18.390.000" />
         <ItemValue label="Driver" value="IDR 50.000" />
         <ItemValue label="Tax 10%" value="IDR 1.800.390" />
-        <ItemValue label="Total Price" value="IDR 390.803.000" />
+        <ItemValue
+          label="Total Price"
+          value="IDR 390.803.000"
+          valueColor="#1ABC9C"
+        />
       </View>
       <View style={styles.content}>
         <Text style={styles.label}>Deliver To: </Text>
@@ -29,7 +33,10 @@ const OrderSummary = () => {
         <ItemValue label="City" value="Cirebon" />
       </View>
       <View style={styles.button}>
-        <Button buttonName="Checkot Now" />
+        <Button
+          buttonName="Checkot Now"
+          onPress={() => navigation.replace('SuccessOrder')}
+        />
       </View>
     </View>
   );
