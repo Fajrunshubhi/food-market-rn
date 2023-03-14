@@ -68,7 +68,7 @@ const NewTaste = () => {
 };
 
 const Popular = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   return (
     <ScrollView>
@@ -114,7 +114,7 @@ const Popular = () => {
 };
 
 const Recommended = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   return (
     <ScrollView>
