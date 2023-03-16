@@ -76,7 +76,7 @@ const PastOrder = () => {
       <View style={styles.SecondRoute}>
         <ItemListFood
           image={FoodDummy3}
-          onPress={() => navigation.navigate('FoodDetail')}
+          onPress={() => navigation.navigate('OrderDetail')}
           type="past-order"
           items={3}
           price="289.000"
@@ -85,7 +85,7 @@ const PastOrder = () => {
         />
         <ItemListFood
           image={FoodDummy1}
-          onPress={() => navigation.navigate('FoodDetail')}
+          onPress={() => navigation.navigate('OrderDetail')}
           type="past-order"
           items={3}
           price="289.000"
@@ -95,7 +95,7 @@ const PastOrder = () => {
         />
         <ItemListFood
           image={FoodDummy5}
-          onPress={() => navigation.navigate('FoodDetail')}
+          onPress={() => navigation.navigate('OrderDetail')}
           type="past-order"
           items={3}
           price="289.000"
@@ -104,7 +104,7 @@ const PastOrder = () => {
         />
         <ItemListFood
           image={FoodDummy2}
-          onPress={() => navigation.navigate('FoodDetail')}
+          onPress={() => navigation.navigate('OrderDetail')}
           type="past-order"
           items={3}
           price="289.000"
@@ -114,7 +114,7 @@ const PastOrder = () => {
         />
         <ItemListFood
           image={FoodDummy4}
-          onPress={() => navigation.navigate('FoodDetail')}
+          onPress={() => navigation.navigate('OrderDetail')}
           type="past-order"
           items={3}
           price="289.000"
