@@ -38,6 +38,10 @@ const OrderDetail = ([navigation]) => {
         <ItemValue label="House No." value="No 1" />
         <ItemValue label="City" value="Cirebon" />
       </View>
+      <View style={styles.content}>
+        <Text style={styles.label}>Order Status: </Text>
+        <ItemValue label="#FM209391" value="Paid" valueColor="#1ABC9C" />
+      </View>
       <View style={styles.button}>
         <Button
           buttonName="Checkot Now"
