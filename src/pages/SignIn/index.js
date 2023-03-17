@@ -1,20 +1,45 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Header, TextInput, Button, Gap} from '../../components';
+import {useForm} from '../../utils';
 
 const SignIn = ({navigation}) => {
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  const [form, setForm] = useForm({
+    email: '',
+    password: '',
+  });
+
+  const onSubmit = () => {
+    console.log('form: ', form);
+  };
+
   return (
     <View style={styles.pages}>
       <Header title="Sign In" subTitle="Find Your Best Ever Meal!" />
       <View style={styles.container}>
         <TextInput
-          labelInput="Email Address"
+          label="Email Address"
           placeholder="Type your email address"
+          value={form.email}
+          onChangeText={value => setForm('email', value)}
         />
         <Gap height={16} />
-        <TextInput labelInput="Password" placeholder="Type Your Password" />
+        <TextInput
+          label="Password"
+          placeholder="Type Your Password"
+          value={form.password}
+          secureTextEntry
+          onChangeText={value => setForm('password', value)}
+        />
         <Gap height={24} />
-        <Button buttonName="Sign In" color="#FFC700" textColor="#020202" />
+        <Button
+          buttonName="Sign In"
+          color="#FFC700"
+          textColor="#020202"
+          onPress={onSubmit}
+        />
         <Gap height={12} />
         <Button
           buttonName="Create New Account"
