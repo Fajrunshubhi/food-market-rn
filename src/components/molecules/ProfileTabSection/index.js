@@ -7,20 +7,13 @@ import {
 } from 'react-native';
 import React from 'react';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import ItemListFood from '../ItemListFood';
-import {
-  FoodDummy1,
-  FoodDummy2,
-  FoodDummy3,
-  FoodDummy4,
-  FoodDummy5,
-} from '../../../assets';
+
 import {useNavigation} from '@react-navigation/native';
 import ItemListMenu from '../ItemListMenu';
 // import {Order} from '../../../pages';
 
 const Account = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   return (
     <ScrollView>
       <View style={styles.FirstRoute}>
@@ -34,7 +27,7 @@ const Account = () => {
 };
 
 const FoodMarket = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   return (
     <ScrollView>
