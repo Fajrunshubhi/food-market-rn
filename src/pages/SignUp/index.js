@@ -1,46 +1,76 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import React from 'react';
 import {Header, TextInput, Gap, Button} from '../../components';
-import {useSelector} from 'react-redux';
+import {useForm} from '../../utils';
+import {useSelector, useDispatch} from 'react-redux';
+import {authRegisterAction} from '../../redux/reducer/auth';
 
 const SignUp = ({navigation}) => {
-  const globalState = useSelector(state => state.global);
-  console.log('global', globalState);
+  const dispatch = useDispatch();
+  const register = useSelector(state => state.register);
+  const [form, setForm] = useForm({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  const onSubmit = () => {
+    console.log('form', form);
+    console.log('register', register);
+    dispatch(authRegisterAction.setRegister(form));
+    navigation.navigate('SignUpAddress');
+    console.log('register', register);
+  };
+
   return (
-    <View style={styles.pages}>
-      <Header
-        title="Sign Up"
-        subTitle="Register and eat!"
-        onBack={() => {}}
-        onPress={() => navigation.navigate('SignIn')}
-      />
-      <View style={styles.container}>
-        <View style={styles.photo}>
-          <View style={styles.borderPhoto}>
-            <View style={styles.photoContainer}>
-              <Text style={styles.addPhoto}>Add Photo</Text>
+    <ScrollView>
+      <View style={styles.pages}>
+        <Header
+          title="Sign Up"
+          subTitle="Register and eat!"
+          onBack={() => {}}
+          onPress={() => navigation.navigate('SignIn')}
+        />
+        <View style={styles.container}>
+          <View style={styles.photo}>
+            <View style={styles.borderPhoto}>
+              <View style={styles.photoContainer}>
+                <Text style={styles.addPhoto}>Add Photo</Text>
+              </View>
             </View>
           </View>
+          <TextInput
+            labelInput="Full Name"
+            placeholder="Type your full name"
+            value={form.name}
+            onChangeText={value => setForm('name', value)}
+          />
+          <Gap height={16} />
+          <TextInput
+            labelInput="Email Address"
+            placeholder="Type your email address"
+            value={form.email}
+            onChangeText={value => setForm('email', value)}
+          />
+          <Gap height={16} />
+          <TextInput
+            labelInput="Password"
+            placeholder="Type Your Password"
+            value={form.password}
+            onChangeText={value => setForm('password', value)}
+            secureTextEntry
+          />
+          <Gap height={24} />
+          <Button
+            buttonName="Continue"
+            color="#FFC700"
+            textColor="#020202"
+            onPress={onSubmit}
+          />
+          <Gap height={12} />
         </View>
-        <Text>{`status error:  ${globalState.isError}`}</Text>
-        <TextInput labelInput="Full Name" placeholder="Type your full name" />
-        <Gap height={16} />
-        <TextInput
-          labelInput="Email Address"
-          placeholder="Type your email address"
-        />
-        <Gap height={16} />
-        <TextInput labelInput="Password" placeholder="Type Your Password" />
-        <Gap height={24} />
-        <Button
-          buttonName="Continue"
-          color="#FFC700"
-          textColor="#020202"
-          onPress={() => navigation.navigate('SignUpAddress')}
-        />
-        <Gap height={12} />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

@@ -1,3 +1,5 @@
+import {act} from 'react-test-renderer';
+
 const {createSlice} = require('@reduxjs/toolkit');
 
 const initStateRegister = {
@@ -15,12 +17,10 @@ const authRegisterSlice = createSlice({
   initialState: initStateRegister,
   reducers: {
     setRegister(state, action) {
-      state.push({
-        name: action.payload.name,
-        email: action.payload.email,
-        password: action.payload.password,
-        password_confirmation: action.payload.password_confirmation,
-      });
+      const newAcc = action.payload;
+      state.name = newAcc.name;
+      state.email = newAcc.email;
+      state.password = newAcc.password;
     },
     setRegisterAddress(state, action) {
       state.push({
