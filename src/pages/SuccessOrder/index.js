@@ -23,7 +23,7 @@ const SuccessOrder = ({navigation}) => {
         <Button
           buttonName="View My Order"
           color="#8D92A3"
-          onPress={() => navigation.replace('MainApp')}
+          onPress={() => navigation.replace('MainApp', {screen: 'Order'})}
           textColor="white"
         />
       </View>

@@ -2,8 +2,11 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {IlEmptyOrder} from '../../assets';
 import {Gap, Button} from '../../components';
+import {useNavigation} from '@react-navigation/native';
 
-const EmptyOrder = ({navigation}) => {
+const EmptyOrder = () => {
+  // karena tidak bisa menggunakan props navigation, maka
+  const navigation = useNavigation();
   return (
     <View style={styles.page}>
       <IlEmptyOrder />
