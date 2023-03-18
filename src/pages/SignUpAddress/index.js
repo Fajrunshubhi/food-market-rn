@@ -51,7 +51,7 @@ const SignUpAddress = ({navigation}) => {
           title="Address"
           subTitle="Make sure it’s valid"
           onBack={() => {}}
-          onPress={() => navigation.navigate('SignIn')}
+          onPress={() => navigation.navigate('SignUp')}
         />
         <View style={styles.container}>
           <TextInput
