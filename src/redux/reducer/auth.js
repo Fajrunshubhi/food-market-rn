@@ -19,6 +19,7 @@ const authRegisterSlice = createSlice({
       state.name = newAcc.name;
       state.email = newAcc.email;
       state.password = newAcc.password;
+      state.password_confirmation = newAcc.password;
     },
     setRegisterAddress(state, action) {
       const newAddress = action.payload;

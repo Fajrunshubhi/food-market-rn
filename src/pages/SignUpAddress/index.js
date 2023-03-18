@@ -4,9 +4,12 @@ import {Header, TextInput, Gap, Button, Select} from '../../components';
 import {useForm} from '../../utils';
 import {useDispatch} from 'react-redux';
 import {authRegisterAction} from '../../redux/reducer/auth';
+import axios from 'axios';
+import {useSelector} from 'react-redux';
 
 const SignUpAddress = ({navigation}) => {
   const dispatch = useDispatch();
+  const register = useSelector(state => state.register);
   const [form, setForm] = useForm({
     phoneNumber: '',
     address: '',
@@ -17,7 +20,18 @@ const SignUpAddress = ({navigation}) => {
   const onSubmit = () => {
     console.log('form : ', form);
     dispatch(authRegisterAction.setRegisterAddress(form));
-    navigation.replace('SuccessSignUp');
+    console.log('register: ', register);
+    const data = {...register};
+    console.log('data: ', data);
+    axios
+      .post('http://foodmarket-backend.buildwithangga.id/api/register', data)
+      .then(res => {
+        console.log('Data success: ', res.data);
+        navigation.replace('SuccessSignUp');
+      })
+      .catch(err => {
+        console.log('sign up error: ', err);
+      });
   };
 
   return (
