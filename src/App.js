@@ -3,23 +3,30 @@ import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Router from './router';
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 import store from './redux/store';
 import FlashMessage from 'react-native-flash-message';
 import {Loading} from './components';
 
-const App = () => {
+const MainApp = () => {
+  const {isLoading} = useSelector(state => state.global);
   return (
     <SafeAreaProvider>
       <StatusBar barStyle="light-content" backgroundColor="#FFC700" />
       <NavigationContainer>
-        <Provider store={store}>
-          <Router />
-          <FlashMessage position="top" />
-          <Loading />
-        </Provider>
+        <Router />
+        <FlashMessage position="top" />
+        {isLoading && <Loading />}
       </NavigationContainer>
     </SafeAreaProvider>
+  );
+};
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <MainApp />
+    </Provider>
   );
 };
 

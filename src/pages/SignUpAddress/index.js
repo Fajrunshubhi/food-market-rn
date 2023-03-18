@@ -7,6 +7,7 @@ import {authRegisterAction} from '../../redux/reducer/auth';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
 import {showMessage, hideMessage} from 'react-native-flash-message';
+import {globalAction} from '../../redux/reducer/global';
 
 const SignUpAddress = ({navigation}) => {
   const dispatch = useDispatch();
@@ -21,13 +22,16 @@ const SignUpAddress = ({navigation}) => {
   const onSubmit = () => {
     dispatch(authRegisterAction.setRegisterAddress(form));
     const data = {...register};
+    dispatch(globalAction.setLoading(true));
     axios
       .post('http://foodmarket-backend.buildwithangga.id/api/register', data)
       .then(res => {
+        dispatch(globalAction.setLoading(false));
         showToast('Register Success', 'success', 'green', 'white');
         navigation.replace('SuccessSignUp');
       })
       .catch(err => {
+        dispatch(globalAction.setLoading(false));
         showToast(err?.response?.data?.message, 'danger', '#D9435E', 'white');
       });
   };
