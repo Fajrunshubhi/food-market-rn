@@ -8,8 +8,10 @@ import {
   FoodDummy5,
 } from '../../assets';
 import {FoodCard, HomeProfile, HomeTabSection} from '../../components';
-
+import {useSelector} from 'react-redux';
 const Home = () => {
+  const regis = useSelector(state => state.register);
+  console.log(regis);
   return (
     <View style={styles.page}>
       <HomeProfile />

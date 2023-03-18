@@ -1,15 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
-const Select = props => {
+const Select = ({label, value, onSelectChange}) => {
+  const [selected, setSelected] = useState('fajrun');
   return (
     <View>
-      <Text style={styles.label}>{props.label}</Text>
+      <Text style={styles.label}>{label}</Text>
       <View style={styles.input}>
-        <Picker>
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="javascript" />
+        <Picker
+          selectedValue={value}
+          onValueChange={valueItem => onSelectChange(valueItem)}>
+          <Picker.Item label="Jakarta" value="Jakarta" />
+          <Picker.Item label="Bandung" value="Bandung" />
+          <Picker.Item label="Semarang" value="Semarang" />
+          <Picker.Item label="Yogyakarta" value="Yogyakarta" />
+          <Picker.Item label="Surabaya" value="Surabaya" />
         </Picker>
       </View>
     </View>

@@ -1,5 +1,3 @@
-import {act} from 'react-test-renderer';
-
 const {createSlice} = require('@reduxjs/toolkit');
 
 const initStateRegister = {
@@ -23,12 +21,11 @@ const authRegisterSlice = createSlice({
       state.password = newAcc.password;
     },
     setRegisterAddress(state, action) {
-      state.push({
-        address: action.payload.address,
-        city: action.payload.city,
-        houseNumber: action.payload.houseNumber,
-        phoneNumber: action.payload.phoneNumber,
-      });
+      const newAddress = action.payload;
+      state.address = newAddress.address;
+      state.city = newAddress.city;
+      state.houseNumber = newAddress.houseNumber;
+      state.phoneNumber = newAddress.phoneNumber;
     },
   },
 });

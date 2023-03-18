@@ -23,7 +23,7 @@ const SignUp = ({navigation}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={styles.scroll}>
       <View style={styles.pages}>
         <Header
           title="Sign Up"
@@ -40,21 +40,21 @@ const SignUp = ({navigation}) => {
             </View>
           </View>
           <TextInput
-            labelInput="Full Name"
+            label="Full Name"
             placeholder="Type your full name"
             value={form.name}
             onChangeText={value => setForm('name', value)}
           />
           <Gap height={16} />
           <TextInput
-            labelInput="Email Address"
+            label="Email Address"
             placeholder="Type your email address"
             value={form.email}
             onChangeText={value => setForm('email', value)}
           />
           <Gap height={16} />
           <TextInput
-            labelInput="Password"
+            label="Password"
             placeholder="Type Your Password"
             value={form.password}
             onChangeText={value => setForm('password', value)}
@@ -77,6 +77,7 @@ const SignUp = ({navigation}) => {
 export default SignUp;
 
 const styles = StyleSheet.create({
+  scroll: {flexGrow: 1},
   pages: {
     flex: 1,
   },
