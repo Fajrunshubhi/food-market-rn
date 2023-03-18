@@ -5,6 +5,8 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Router from './router';
 import {Provider} from 'react-redux';
 import store from './redux/store';
+import FlashMessage from 'react-native-flash-message';
+import {Loading} from './components';
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
       <NavigationContainer>
         <Provider store={store}>
           <Router />
+          <FlashMessage position="top" />
+          <Loading />
         </Provider>
       </NavigationContainer>
     </SafeAreaProvider>
