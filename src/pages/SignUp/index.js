@@ -5,7 +5,7 @@ import {
   ScrollView,
   Platform,
   PermissionsAndroid,
-  Alert,
+  Image,
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
@@ -18,7 +18,7 @@ import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 const SignUp = ({navigation}) => {
   const dispatch = useDispatch();
   const register = useSelector(state => state.register);
-  const [filePath, setFilePath] = useState({});
+  const [photo, setPhoto] = useState('');
   const [form, setForm] = useForm({
     name: '',
     email: '',
@@ -108,18 +108,16 @@ const SignUp = ({navigation}) => {
   //   }
   // };
 
-  const chooseFile = type => {
+  const chooseFile = () => {
     let options = {
-      mediaType: type,
-      maxWidth: 300,
-      maxHeight: 550,
-      quality: 1,
+      maxWidth: 200,
+      maxHeight: 200,
+      quality: 0.5,
     };
     launchImageLibrary(options, response => {
       console.log('Response = ', response);
 
       if (response.didCancel) {
-        Alert('User cancelled camera picker');
         ShowMessage(
           'User cancelled camera picker',
           'danger',
@@ -128,7 +126,6 @@ const SignUp = ({navigation}) => {
         );
         return;
       } else if (response.errorCode === 'camera_unavailable') {
-        Alert('Camera not available on device');
         ShowMessage(
           'Camera not available on device',
           'danger',
@@ -137,23 +134,31 @@ const SignUp = ({navigation}) => {
         );
         return;
       } else if (response.errorCode === 'permission') {
-        Alert('Permission not satisfied');
         ShowMessage('Permission not satisfied', 'danger', '#D9435E', 'white');
         return;
       } else if (response.errorCode === 'others') {
-        Alert(response.errorMessage);
         return;
+      } else {
+        const source = {uri: response.assets[0].uri};
+
+        const dataImage = {
+          uri: response.assets[0].uri,
+          type: response.assets[0].type,
+          name: response.assets[0].fileName,
+        };
+        setPhoto(source);
       }
-      console.log('base64 -> ', response.base64);
-      console.log('uri -> ', response.uri);
-      console.log('width -> ', response.width);
-      console.log('height -> ', response.height);
-      console.log('fileSize -> ', response.fileSize);
-      console.log('type -> ', response.type);
-      console.log('fileName -> ', response.fileName);
-      setFilePath(response);
+      // console.log('base64 -> ', response.assets);
+      // console.log('uri -> ', response.assets.uri);
+      // console.log('width -> ', response.width);
+      // console.log('height -> ', response.height);
+      // console.log('fileSize -> ', response.fileSize);
+      // console.log('type -> ', response.type);
+      // console.log('fileName -> ', response.fileName);
     });
   };
+
+  console.log('uri: ', photo);
 
   const onSubmit = () => {
     console.log('form', form);
@@ -174,11 +179,15 @@ const SignUp = ({navigation}) => {
         />
         <View style={styles.container}>
           <View style={styles.photo}>
-            <TouchableOpacity onPress={chooseFile('photo')}>
+            <TouchableOpacity onPress={chooseFile}>
               <View style={styles.borderPhoto}>
-                <View style={styles.photoContainer}>
-                  <Text style={styles.addPhoto}>Add Photo</Text>
-                </View>
+                {photo !== '' ? (
+                  <Image style={styles.photoContainer} source={photo} />
+                ) : (
+                  <View style={styles.photoContainer}>
+                    <Text style={styles.addPhoto}>Add Photo</Text>
+                  </View>
+                )}
               </View>
             </TouchableOpacity>
           </View>
