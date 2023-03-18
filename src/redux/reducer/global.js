@@ -1,5 +1,4 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {create} from 'react-test-renderer';
 
 const initGlobalState = {
   isError: false,

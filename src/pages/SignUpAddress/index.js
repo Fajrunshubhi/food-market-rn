@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
 import {Header, TextInput, Gap, Button, Select} from '../../components';
 import {useForm} from '../../utils';
@@ -6,7 +6,7 @@ import {useDispatch} from 'react-redux';
 import {authRegisterAction} from '../../redux/reducer/auth';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
-import {showMessage, hideMessage} from 'react-native-flash-message';
+import {showMessage} from 'react-native-flash-message';
 import {globalAction} from '../../redux/reducer/global';
 
 const SignUpAddress = ({navigation}) => {
