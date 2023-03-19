@@ -18,12 +18,11 @@ const SignUpAddress = ({navigation}) => {
     houseNumber: '',
     city: 'Your city',
   });
-  dispatch(authRegisterAction.setRegisterAddress(form));
 
   const onSubmit = () => {
-    const data = {...register};
-    console.log('register: ', register);
-    console.log('DATA: ', data);
+    console.log('form :', form);
+    const data = {...form, ...register};
+    console.log('data register: ', data);
     dispatch(globalAction.setLoading(true));
     axios
       .post('http://foodmarket-backend.buildwithangga.id/api/register', data)

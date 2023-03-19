@@ -161,11 +161,9 @@ const SignUp = ({navigation}) => {
   };
 
   const onSubmit = () => {
-    console.log('form', form);
     dispatch(authRegisterAction.setRegister(form));
     navigation.navigate('SignUpAddress');
   };
-  // console.log('register in signup : ', register);
 
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
