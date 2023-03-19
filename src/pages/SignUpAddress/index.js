@@ -1,47 +1,68 @@
 import React from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
 import {Header, TextInput, Gap, Button, Select} from '../../components';
-import {useForm} from '../../utils';
+import {ShowMessage, useForm} from '../../utils';
 import {useDispatch} from 'react-redux';
 import {authRegisterAction} from '../../redux/reducer/auth';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
-import {showMessage} from 'react-native-flash-message';
 import {globalAction} from '../../redux/reducer/global';
 
 const SignUpAddress = ({navigation}) => {
   const dispatch = useDispatch();
   const register = useSelector(state => state.register);
+  const photoReducer = useSelector(state => state.photo);
   const [form, setForm] = useForm({
     phoneNumber: '',
     address: '',
     houseNumber: '',
     city: 'Your city',
   });
+  dispatch(authRegisterAction.setRegisterAddress(form));
 
   const onSubmit = () => {
-    dispatch(authRegisterAction.setRegisterAddress(form));
     const data = {...register};
+    console.log('register: ', register);
+    console.log('DATA: ', data);
     dispatch(globalAction.setLoading(true));
     axios
       .post('http://foodmarket-backend.buildwithangga.id/api/register', data)
       .then(res => {
+        console.log('data success: ', res.data);
+        if (photoReducer.isUploadPhoto) {
+          const photoUpload = new FormData();
+          photoUpload.append('file', photoReducer);
+          axios
+            .post(
+              'http://foodmarket-backend.buildwithangga.id/api/user/photo',
+              photoUpload,
+              {
+                headers: {
+                  Authorization: `${res.data.data.token_type} ${res.data.data.access_token}`,
+                  'Content-Type': 'multipart/form-data',
+                },
+              },
+            )
+            .then(resUpload => console.log('Success upload: ', resUpload))
+            .catch(err =>
+              ShowMessage(
+                err?.response?.data?.message,
+                'danger',
+                '#D9435E',
+                'white',
+              ),
+            );
+        }
+
         dispatch(globalAction.setLoading(false));
-        showToast('Register Success', 'success', 'green', 'white');
+        ShowMessage('Register Success', 'success', 'green', 'white');
         navigation.replace('SuccessSignUp');
       })
       .catch(err => {
         dispatch(globalAction.setLoading(false));
-        showToast(err?.response?.data?.message, 'danger', '#D9435E', 'white');
+        ShowMessage(err?.response?.data?.message, 'danger', '#D9435E', 'white');
+        console.log(err.message);
       });
-  };
-  const showToast = (message, type, bgColor, color) => {
-    showMessage({
-      message: message,
-      type: type,
-      backgroundColor: bgColor,
-      color: color,
-    });
   };
 
   return (

@@ -12,7 +12,7 @@ import React, {useState} from 'react';
 import {Header, TextInput, Gap, Button} from '../../components';
 import {ShowMessage, useForm} from '../../utils';
 import {useSelector, useDispatch} from 'react-redux';
-import {authRegisterAction} from '../../redux/reducer/auth';
+import {authPhotoAction, authRegisterAction} from '../../redux/reducer/auth';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const SignUp = ({navigation}) => {
@@ -147,6 +147,8 @@ const SignUp = ({navigation}) => {
           name: response.assets[0].fileName,
         };
         setPhoto(source);
+        dispatch(authPhotoAction.setPhoto(dataImage));
+        dispatch(authPhotoAction.setUploadStatus(true));
       }
       // console.log('base64 -> ', response.assets);
       // console.log('uri -> ', response.assets.uri);
@@ -158,15 +160,12 @@ const SignUp = ({navigation}) => {
     });
   };
 
-  console.log('uri: ', photo);
-
   const onSubmit = () => {
     console.log('form', form);
-    console.log('register', register);
     dispatch(authRegisterAction.setRegister(form));
     navigation.navigate('SignUpAddress');
-    console.log('register', register);
   };
+  // console.log('register in signup : ', register);
 
   return (
     <ScrollView contentContainerStyle={styles.scroll}>

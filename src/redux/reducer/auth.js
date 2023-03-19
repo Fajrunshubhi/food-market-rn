@@ -31,7 +31,30 @@ const authRegisterSlice = createSlice({
   },
 });
 
-const authRegisterAction = authRegisterSlice.actions;
+const initPhoto = {
+  uri: '',
+  type: '',
+  name: '',
+  isUploadPhoto: false,
+};
+const authPhotoSlice = createSlice({
+  name: 'authPhoto',
+  initialState: initPhoto,
+  reducers: {
+    setPhoto(state, action) {
+      const dataImage = action.payload;
+      state.uri = dataImage.uri;
+      state.type = dataImage.type;
+      state.name = dataImage.name;
+    },
+    setUploadStatus(state, action) {
+      state.isUploadPhoto = action.payload;
+    },
+  },
+});
 
-export {authRegisterAction};
-export {authRegisterSlice};
+const authRegisterAction = authRegisterSlice.actions;
+const authPhotoAction = authPhotoSlice.actions;
+
+export {authRegisterAction, authPhotoAction};
+export {authRegisterSlice, authPhotoSlice};
