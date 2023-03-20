@@ -1,15 +1,25 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {IcMin, IcPlus} from '../../../assets';
 
-const Counter = () => {
+const Counter = ({onValueChange}) => {
+  const [value, setValue] = useState(1);
+  const onCountPlus = () => {
+    setValue(prevValue => prevValue + 1);
+  };
+  const onCountMin = () => {
+    if (value > 1) {
+      setValue(prevValue => prevValue - 1);
+    }
+  };
+  onValueChange(value);
   return (
     <View style={styles.counter}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onCountMin}>
         <IcMin />
       </TouchableOpacity>
-      <Text style={styles.value}>10</Text>
-      <TouchableOpacity>
+      <Text style={styles.value}>{value}</Text>
+      <TouchableOpacity onPress={onCountPlus}>
         <IcPlus />
       </TouchableOpacity>
     </View>

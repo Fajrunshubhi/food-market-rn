@@ -21,8 +21,7 @@ const ItemListFood = ({
           <>
             <View style={styles.textFoodContainer}>
               <Text style={styles.textFood}> {name}</Text>
-              <Number number={price} />
-              {/* <Text style={styles.textPrice}> IDR {price}</Text> */}
+              <Number number={price} style={styles.textPrice} />
             </View>
             <Rating number={rating} />
           </>
@@ -32,7 +31,7 @@ const ItemListFood = ({
           <>
             <View style={styles.textFoodContainer}>
               <Text style={styles.textFood}> {name}</Text>
-              <Text style={styles.textPrice}> IDR {price}</Text>
+              <Number number={price} style={styles.textPrice} />
             </View>
             <Text style={styles.items}>{items} items</Text>
           </>
@@ -68,7 +67,7 @@ const ItemListFood = ({
           <>
             <View style={styles.textFoodContainer}>
               <Text style={styles.textFood}> {name}</Text>
-              <Text style={styles.textPrice}> IDR {price}</Text>
+              <Number number={price} style={styles.textPrice} />
             </View>
             <Rating />
           </>
@@ -110,6 +109,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Poppins-Regular',
     color: '#020202',
+    marginStart: -5,
   },
   textPrice: {
     fontFamily: 'Poppins-Regular',

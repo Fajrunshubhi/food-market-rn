@@ -5,13 +5,16 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {FoodDummy6, IcBackWhite} from '../../assets';
 import {Button, Counter, Number, Rating} from '../../components';
 
 const FoodDetail = ({navigation, route}) => {
   const foodDetail = route.params.itemFood;
-  console.log(foodDetail);
+  const [totalItem, setTotalItem] = useState(1);
+  const onCounterChange = value => {
+    setTotalItem(value);
+  };
   return (
     <View style={styles.page}>
       <ImageBackground source={FoodDummy6} style={styles.cover}>
@@ -28,7 +31,7 @@ const FoodDetail = ({navigation, route}) => {
               <Text style={styles.title}>{foodDetail.name}</Text>
               <Rating number={foodDetail.rate} />
             </View>
-            <Counter />
+            <Counter onValueChange={onCounterChange} />
           </View>
           <Text style={styles.desc}>{foodDetail.description}</Text>
           <Text style={styles.label}>Ingredients:</Text>
@@ -37,8 +40,11 @@ const FoodDetail = ({navigation, route}) => {
         <View style={styles.footer}>
           <View>
             <Text style={styles.labelPrice}>Total Price: </Text>
-            {/* <Text style={styles.price}>{foodDetail.price}</Text> */}
-            <Number number={foodDetail.price} />
+            {/* <Text style={styles.price}>{foodDetail.price * totalItem}</Text> */}
+            <Number
+              style={styles.price}
+              number={foodDetail.price * totalItem}
+            />
           </View>
           <View style={styles.button}>
             <Button
