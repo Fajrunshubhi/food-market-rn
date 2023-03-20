@@ -10,14 +10,16 @@ import {FoodDummy6, IcBackWhite} from '../../assets';
 import {Button, Counter, Number, Rating} from '../../components';
 
 const FoodDetail = ({navigation, route}) => {
-  const foodDetail = route.params.itemFood;
+  const foodDetail = route.params.item;
   const [totalItem, setTotalItem] = useState(1);
   const onCounterChange = value => {
     setTotalItem(value);
   };
   return (
     <View style={styles.page}>
-      <ImageBackground source={FoodDummy6} style={styles.cover}>
+      <ImageBackground
+        source={{uri: foodDetail.picturePath}}
+        style={styles.cover}>
         <TouchableOpacity
           style={styles.back}
           onPress={() => navigation.goBack()}>

@@ -19,14 +19,14 @@ const Home = ({navigation}) => {
           horizontal
           showsHorizontalScrollIndicator={false}>
           <View style={styles.foddCardContainer}>
-            {food.map(itemFood => {
+            {food.map(item => {
               return (
                 <FoodCard
-                  key={itemFood.id}
-                  name={itemFood.name}
-                  image={{uri: itemFood.picturePath}}
-                  rating={itemFood.rate}
-                  onPress={() => navigation.navigate('FoodDetail', {itemFood})}
+                  key={item.id}
+                  name={item.name}
+                  image={{uri: item.picturePath}}
+                  rating={item.rate}
+                  onPress={() => navigation.navigate('FoodDetail', {item})}
                 />
               );
             })}
