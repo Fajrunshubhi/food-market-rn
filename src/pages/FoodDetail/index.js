@@ -7,15 +7,17 @@ import {
 } from 'react-native';
 import React from 'react';
 import {FoodDummy6, IcBackWhite} from '../../assets';
-import {Button, Counter, Rating} from '../../components';
+import {Button, Counter, Number, Rating} from '../../components';
 
-const FoodDetail = ({navigation}) => {
+const FoodDetail = ({navigation, route}) => {
+  const foodDetail = route.params.itemFood;
+  console.log(foodDetail);
   return (
     <View style={styles.page}>
       <ImageBackground source={FoodDummy6} style={styles.cover}>
         <TouchableOpacity
           style={styles.back}
-          onPress={() => navigation.navigate('MainApp')}>
+          onPress={() => navigation.goBack()}>
           <IcBackWhite />
         </TouchableOpacity>
       </ImageBackground>
@@ -23,23 +25,20 @@ const FoodDetail = ({navigation}) => {
         <View style={styles.mainContent}>
           <View style={styles.productContainer}>
             <View>
-              <Text style={styles.title}>Cherry Healthy</Text>
-              <Rating />
+              <Text style={styles.title}>{foodDetail.name}</Text>
+              <Rating number={foodDetail.rate} />
             </View>
             <Counter />
           </View>
-          <Text style={styles.desc}>
-            Makanan khas Bandung yang cukup sering dipesan oleh anak muda dengan
-            pola makan yang cukup tinggi dengan mengutamakan diet yang sehat dan
-            teratur.
-          </Text>
+          <Text style={styles.desc}>{foodDetail.description}</Text>
           <Text style={styles.label}>Ingredients:</Text>
-          <Text style={styles.desc}>Seledri, telur, blueberry, madu.</Text>
+          <Text style={styles.desc}>{foodDetail.ingredients}</Text>
         </View>
         <View style={styles.footer}>
           <View>
             <Text style={styles.labelPrice}>Total Price: </Text>
-            <Text style={styles.price}>IDR: 289.000</Text>
+            {/* <Text style={styles.price}>{foodDetail.price}</Text> */}
+            <Number number={foodDetail.price} />
           </View>
           <View style={styles.button}>
             <Button
