@@ -1,9 +1,10 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Header, TextInput, Button, Gap} from '../../components';
-import {useForm} from '../../utils';
+import {getData, useForm} from '../../utils';
 import {useDispatch} from 'react-redux';
 import {signInAction} from '../../redux/action';
+import {get} from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 const SignIn = ({navigation}) => {
   // const [email, setEmail] = useState('');
