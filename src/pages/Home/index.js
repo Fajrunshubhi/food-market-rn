@@ -8,10 +8,7 @@ import {
   FoodDummy5,
 } from '../../assets';
 import {FoodCard, HomeProfile, HomeTabSection} from '../../components';
-import {useSelector} from 'react-redux';
 const Home = () => {
-  const regis = useSelector(state => state.register);
-  console.log(regis);
   return (
     <View style={styles.page}>
       <HomeProfile />
@@ -41,29 +38,6 @@ export default Home;
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-  },
-  profileContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 24,
-    paddingTop: 32,
-    paddingBottom: 24,
-    backgroundColor: 'white',
-  },
-  appName: {
-    fontSize: 22,
-    fontFamily: 'Poppins-Medium',
-    color: '#020202',
-  },
-  desc: {
-    fontSize: 14,
-    fontFamily: 'Poppins-Medium',
-    color: '#8D92A3',
-  },
-  profile: {
-    fontSize: 50,
-    height: 50,
-    borderRadius: 8,
   },
   foddCardContainer: {
     flexDirection: 'row',

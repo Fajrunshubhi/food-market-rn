@@ -1,12 +1,11 @@
 import React from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
 import {Header, TextInput, Gap, Button, Select} from '../../components';
-import {ShowMessage, useForm} from '../../utils';
+import {useForm} from '../../utils';
 import {useDispatch} from 'react-redux';
-import {authRegisterAction} from '../../redux/reducer/auth';
-import axios from 'axios';
 import {useSelector} from 'react-redux';
-import {globalAction} from '../../redux/reducer/global';
+import setLoading from '../../redux/action/global';
+import {signUpAction} from '../../redux/action';
 
 const SignUpAddress = ({navigation}) => {
   const dispatch = useDispatch();
@@ -16,52 +15,15 @@ const SignUpAddress = ({navigation}) => {
     phoneNumber: '',
     address: '',
     houseNumber: '',
-    city: 'Your city',
+    city: 'Jakarta',
   });
 
   const onSubmit = () => {
     console.log('form :', form);
     const data = {...form, ...register};
     console.log('data register: ', data);
-    dispatch(globalAction.setLoading(true));
-    axios
-      .post('http://foodmarket-backend.buildwithangga.id/api/register', data)
-      .then(res => {
-        console.log('data success: ', res.data);
-        if (photoReducer.isUploadPhoto) {
-          const photoUpload = new FormData();
-          photoUpload.append('file', photoReducer);
-          axios
-            .post(
-              'http://foodmarket-backend.buildwithangga.id/api/user/photo',
-              photoUpload,
-              {
-                headers: {
-                  Authorization: `${res.data.data.token_type} ${res.data.data.access_token}`,
-                  'Content-Type': 'multipart/form-data',
-                },
-              },
-            )
-            .then(resUpload => console.log('Success upload: ', resUpload))
-            .catch(err =>
-              ShowMessage(
-                err?.response?.data?.message,
-                'danger',
-                '#D9435E',
-                'white',
-              ),
-            );
-        }
-
-        dispatch(globalAction.setLoading(false));
-        ShowMessage('Register Success', 'success', 'green', 'white');
-        navigation.replace('SuccessSignUp');
-      })
-      .catch(err => {
-        dispatch(globalAction.setLoading(false));
-        ShowMessage(err?.response?.data?.message, 'danger', '#D9435E', 'white');
-        console.log(err.message);
-      });
+    dispatch(setLoading(true));
+    dispatch(signUpAction(data, photoReducer, navigation));
   };
 
   return (

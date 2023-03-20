@@ -14,7 +14,9 @@ const SuccessSignUp = ({navigation}) => {
         <Button
           buttonName="Find Foods"
           color="#FFC700"
-          onPress={() => navigation.replace('MainApp')}
+          onPress={() =>
+            navigation.reset({index: 0, routes: [{name: 'MainApp'}]})
+          }
         />
       </View>
     </View>
