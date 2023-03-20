@@ -1,13 +1,6 @@
 import React, {useEffect} from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  FoodDummy1,
-  FoodDummy2,
-  FoodDummy3,
-  FoodDummy4,
-  FoodDummy5,
-} from '../../assets';
 import {FoodCard, HomeProfile, HomeTabSection} from '../../components';
 import {getFoodData} from '../../redux/action';
 
@@ -16,7 +9,7 @@ const Home = () => {
   const {food} = useSelector(state => state.food);
   useEffect(() => {
     dispatch(getFoodData());
-  }, []);
+  }, [dispatch]);
   return (
     <View style={styles.page}>
       <HomeProfile />
@@ -29,6 +22,7 @@ const Home = () => {
             {food.map(itemFood => {
               return (
                 <FoodCard
+                  key={itemFood.id}
                   name={itemFood.name}
                   image={{uri: itemFood.picturePath}}
                   rating={itemFood.rate}

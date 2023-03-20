@@ -2,6 +2,9 @@ const {createSlice} = require('@reduxjs/toolkit');
 
 const initHome = {
   food: [],
+  newTaste: [],
+  popular: [],
+  recommended: [],
 };
 
 const homeSlice = createSlice({
@@ -10,6 +13,15 @@ const homeSlice = createSlice({
   reducers: {
     setFood(state, action) {
       state.food = action.payload;
+    },
+    setFoodNewTaste(state, action) {
+      state.newTaste = action.payload;
+    },
+    setFoodPopular(state, action) {
+      state.popular = action.payload;
+    },
+    setFoodRecommended(state, action) {
+      state.recommended = action.payload;
     },
   },
 });
