@@ -11,7 +11,6 @@ import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {useNavigation} from '@react-navigation/native';
 import ItemListMenu from '../ItemListMenu';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import {Order} from '../../../pages';
 
 const Account = () => {
   const navigation = useNavigation();

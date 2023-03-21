@@ -1,14 +1,16 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Header, TextInput, Button, Gap} from '../../components';
-import {getData, useForm} from '../../utils';
+import {useForm} from '../../utils';
 import {useDispatch} from 'react-redux';
 import {signInAction} from '../../redux/action';
-import {get} from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 const SignIn = ({navigation}) => {
+  // opsi hooks
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
+
+  // custom hooks
   const [form, setForm] = useForm({
     email: '',
     password: '',

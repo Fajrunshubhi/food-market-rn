@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
 const Select = ({label, value, onSelectChange}) => {
-  const [selected, setSelected] = useState('fajrun');
   return (
     <View>
       <Text style={styles.label}>{label}</Text>

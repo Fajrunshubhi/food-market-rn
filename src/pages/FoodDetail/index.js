@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
-import {FoodDummy6, IcBackWhite} from '../../assets';
+import {IcBackWhite} from '../../assets';
 import {Button, Counter, Number, Rating} from '../../components';
 
 const FoodDetail = ({navigation, route}) => {
