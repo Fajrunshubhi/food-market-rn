@@ -5,16 +5,50 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {IcBackWhite} from '../../assets';
 import {Button, Counter, Number, Rating} from '../../components';
+import {getData} from '../../utils';
 
 const FoodDetail = ({navigation, route}) => {
   const foodDetail = route.params.item;
   const [totalItem, setTotalItem] = useState(1);
+  const [userProfile, setUserProfile] = useState({});
   const onCounterChange = value => {
     setTotalItem(value);
   };
+
+  useEffect(() => {
+    getData('userProfile').then(res => {
+      setUserProfile(res);
+    });
+  }, []);
+
+  const onOrderData = () => {
+    const driver = 25000;
+    const totalPrice = totalItem * foodDetail.price;
+    const tax = (10 / 100) * totalPrice;
+    const total = driver + totalPrice + tax;
+
+    const data = {
+      item: {
+        name: foodDetail.name,
+        price: foodDetail.price,
+        picturePath: foodDetail.picturePath,
+      },
+      transaction: {
+        totalItem: totalItem,
+        totalPrice: totalPrice,
+        driver: driver,
+        tax: tax,
+        total: total,
+      },
+      userProfile,
+    };
+    console.log('data for checkout: ', data);
+    navigation.navigate('OrderSummary', data);
+  };
+
   return (
     <View style={styles.page}>
       <ImageBackground
@@ -53,7 +87,7 @@ const FoodDetail = ({navigation, route}) => {
               buttonName="Order Now"
               color="#FFC700"
               textColor="black"
-              onPress={() => navigation.navigate('OrderSummary')}
+              onPress={onOrderData}
             />
           </View>
         </View>

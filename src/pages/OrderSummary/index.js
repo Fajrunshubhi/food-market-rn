@@ -3,41 +3,53 @@ import React from 'react';
 import {Header, ItemListFood, ItemValue, Button, Gap} from '../../components';
 import {FoodDummy1} from '../../assets';
 
-const OrderSummary = ({navigation}) => {
+const OrderSummary = ({navigation, route}) => {
+  const {item, transaction, userProfile} = route.params;
+
   return (
     <ScrollView>
       <View>
         <Header
           title="Payment"
           subTitle="You deserve better meal"
-          onBack={() => {}}
+          onBack
+          onPress={() => navigation.goBack()}
         />
         <View style={styles.content}>
           <Text style={styles.label}>Item Ordered</Text>
           <ItemListFood
             type="order-summary"
-            name="Sop Bumil"
-            image={FoodDummy1}
-            price="289.000"
-            items={5}
+            name={item.name}
+            image={{uri: item.picturePath}}
+            price={item.price}
+            items={transaction.totalItem}
           />
           <Text style={styles.label}>Details Transaction</Text>
-          <ItemValue label="Cherry Healthy" value="IDR 18.390.000" />
-          <ItemValue label="Driver" value="IDR 50.000" />
-          <ItemValue label="Tax 10%" value="IDR 1.800.390" />
+          <ItemValue
+            label={item.name}
+            value={transaction.totalPrice}
+            type="currency"
+          />
+          <ItemValue
+            label="Driver"
+            value={transaction.driver}
+            type="currency"
+          />
+          <ItemValue label="Tax 10%" value={transaction.tax} type="currency" />
           <ItemValue
             label="Total Price"
-            value="IDR 390.803.000"
+            value={transaction.total}
             valueColor="#1ABC9C"
+            type="currency"
           />
         </View>
         <View style={styles.content}>
           <Text style={styles.label}>Deliver To: </Text>
-          <ItemValue label="Name" value="Fajrun Shubhi" />
-          <ItemValue label="Phone No." value="081223969871" />
-          <ItemValue label="Address" value="Cirebon, Jawa Barat" />
-          <ItemValue label="House No." value="No 1" />
-          <ItemValue label="City" value="Cirebon" />
+          <ItemValue label="Name" value={userProfile.name} />
+          <ItemValue label="Phone No." value={userProfile.phoneNumber} />
+          <ItemValue label="Address" value={userProfile.address} />
+          <ItemValue label="House No." value={userProfile.houseNumber} />
+          <ItemValue label="City" value={userProfile.city} />
         </View>
         <View style={styles.button}>
           <Button
