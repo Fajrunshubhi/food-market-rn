@@ -35,6 +35,7 @@ const FoodDetail = ({navigation, route}) => {
         name: foodDetail.name,
         price: foodDetail.price,
         picturePath: foodDetail.picturePath,
+        id: foodDetail.id,
       },
       transaction: {
         totalItem: totalItem,
@@ -45,7 +46,6 @@ const FoodDetail = ({navigation, route}) => {
       },
       userProfile,
     };
-    console.log('data for checkout: ', data);
     navigation.navigate('OrderSummary', data);
   };
 

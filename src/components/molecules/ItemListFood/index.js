@@ -41,9 +41,11 @@ const ItemListFood = ({
           <>
             <View style={styles.textFoodContainer}>
               <Text style={styles.textFood}> {name}</Text>
-              <Text style={styles.textPrice}>
-                {items} items.IDR {price}
-              </Text>
+              <View style={styles.row}>
+                <Text style={styles.textPrice}>{items} items</Text>
+                <View style={styles.dot} />
+                <Number number={price} style={styles.price} />
+              </View>
             </View>
           </>
         );
@@ -52,9 +54,11 @@ const ItemListFood = ({
           <>
             <View style={styles.textFoodContainer}>
               <Text style={styles.textFood}> {name}</Text>
-              <Text style={styles.textPrice}>
-                {items} items.IDR {price}
-              </Text>
+              <View style={styles.row}>
+                <Text style={styles.textPrice}>{items} items</Text>
+                <View style={styles.dot} />
+                <Number number={price} style={styles.price} />
+              </View>
             </View>
             <View>
               <Text style={styles.date}>{date}</Text>
@@ -130,5 +134,16 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontFamily: 'Poppins-Regular',
     color: '#D9435E',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  dot: {
+    width: 5,
+    height: 5,
+    borderRadius: 3,
+    backgroundColor: '#8D92A3',
+    marginHorizontal: 4,
   },
 });

@@ -4,7 +4,7 @@ import EmptyOrder from '../EmptyOrder';
 import {Header, OrderTabSection} from '../../components';
 
 const Order = () => {
-  const [isEmpty, setIsEmpty] = useState(true);
+  const [isEmpty, setIsEmpty] = useState(false);
   return (
     <View style={styles.page}>
       {isEmpty ? (
