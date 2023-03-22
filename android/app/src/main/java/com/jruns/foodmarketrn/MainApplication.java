@@ -1,4 +1,4 @@
-package com.foodmarketrn;
+package com.jruns.foodmarketrn;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
